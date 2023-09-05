@@ -39,9 +39,10 @@ typedef struct instruction_s
 } instruction_t;
 
 /* Prototypes */
-void getOp(const char *opcode, stack_t **stack, unsigned int line_number);
+void getOp(char *opcode, unsigned int line_number, char *line, FILE *file);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void freeStack(stack_t **stack);
+void freeArg(stack_t **stack, char *line, FILE *file);
 
 #endif
