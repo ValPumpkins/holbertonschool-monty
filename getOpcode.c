@@ -1,6 +1,6 @@
 #include "monty.h"
 
-
+stack_t *stack = NULL;
 
 /**
 * getOp - checks opcode and calls corresponding function
@@ -12,18 +12,16 @@
 */
 void getOp(char *opcode, unsigned int line_number, char *line, FILE *file)
 {
-	stack_t *stack = NULL;
-
 	instruction_t instruction[] = {
 		{"push", push},
 		{"pall", pall},
 		{NULL, NULL}
 	};
 
-	int index;
+	size_t index;
 	int found = 0;
 
-	for (index = 0; instruction[index].opcode; index++)
+	for (index = 0; instruction[index].opcode != NULL; index++)
 	{
 		if (strcmp(opcode, instruction[index].opcode) == 0)
 		{
@@ -32,7 +30,7 @@ void getOp(char *opcode, unsigned int line_number, char *line, FILE *file)
 			break;
 		}
 	}
-	if (found == 0)
+	if (!found)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 		freeArg(&stack, line, file);
