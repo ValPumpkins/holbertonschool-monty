@@ -1,35 +1,41 @@
 #include "monty.h"
 
+
+
 /**
 * getOp - checks opcode and calls corresponding function
 * @opcode: opcode to check
-* @stack: pointer to stack
 * @line_number: line number
+* @line: line
+* @file: ficher monty
 * Return: void
 */
-void getOp(const char *opcode, stack_t **stack, unsigned int line_number)
+void getOp(char *opcode, unsigned int line_number, char *line, FILE *file)
 {
-	instruction_t instruction[] = { // array of structs for opcode and function
+	stack_t *stack = NULL;
+
+	instruction_t instruction[] = {
 		{"push", push},
 		{"pall", pall},
 		{NULL, NULL}
 	};
 
-	int i;
+	int index;
 	int found = 0;
 
-	for (i = 0; instruction[i].opcode; i++) // iterate through array
+	for (index = 0; instruction[index].opcode; index++)
 	{
-		if (strcmp(opcode, instruction[i].opcode) == 0) // compare opcode to struct
+		if (strcmp(opcode, instruction[index].opcode) == 0)
 		{
-			instruction[i].f(stack, line_number); // call function
-			found = 1; // set found to 1
+			instruction[index].f(&stack, line_number);
+			found = 1;
 			break;
 		}
 	}
-	if (found == 0) // if not found
+	if (found == 0)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		freeArg(&stack, line, file);
 		exit(EXIT_FAILURE);
 	}
 
