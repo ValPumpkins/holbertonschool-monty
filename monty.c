@@ -12,9 +12,9 @@ int main(int argc, char *argv[])
 	char *line = NULL;
 	char *opcode;
 	FILE *file;
-	size_t line_number = 0, len = 0;
-	stack_t *stack = NULL;
-
+	size_t len = 0;
+	unsigned int line_number = 0;
+	
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
