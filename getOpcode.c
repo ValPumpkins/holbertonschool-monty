@@ -20,6 +20,7 @@ void getOp(char *opcode, unsigned int line_number, char *line, FILE *file)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", division},
 		{NULL, NULL}
 	};
 
@@ -37,7 +38,7 @@ void getOp(char *opcode, unsigned int line_number, char *line, FILE *file)
 	}
 	if (!found)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 		freeArg(&stack, line, file);
 		exit(EXIT_FAILURE);
 	}
