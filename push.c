@@ -6,7 +6,6 @@
 * @line_number: line number
 * Return: void
 */
-
 void push(stack_t **stack, unsigned int line_number)
 {
 	int num;
@@ -35,11 +34,12 @@ void push(stack_t **stack, unsigned int line_number)
 	newNode->n = num;
 	newNode->prev = NULL;
 	if (*stack == NULL)
+		newNode->next = NULL;
+	else
 	{
 		newNode->next = *stack;
 		(*stack)->prev = newNode;
 	}
-	else
-		newNode->next = NULL;
+
 	*stack = newNode;
 }
