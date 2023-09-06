@@ -16,13 +16,13 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (token == NULL)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	num = atoi(token);
 	if (num == 0 && strcmp(token, "0") != 0)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	newNode = malloc(sizeof(stack_t));
