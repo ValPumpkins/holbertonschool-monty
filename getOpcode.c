@@ -7,8 +7,7 @@ stack_t *stack = NULL;
 * @opcode: opcode to check
 * @line_number: line number
 * @line: line
-* @file: ficher monty
-* Return: void
+* @file: file
 */
 void getOp(char *opcode, unsigned int line_number, char *line, FILE *file)
 {
@@ -20,6 +19,7 @@ void getOp(char *opcode, unsigned int line_number, char *line, FILE *file)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 
