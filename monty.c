@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	FILE *file;
 	size_t len = 0;
 	unsigned int line_number = 0;
-	
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
