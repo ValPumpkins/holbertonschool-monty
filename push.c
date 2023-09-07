@@ -9,7 +9,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	int num;
-	char *token;
+	char *token, *endptr;
 	stack_t *newNode;
 
 	token = strtok(NULL, " \t\n\r");
@@ -19,8 +19,8 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	num = atoi(token);
-	if (num == 0 && strcmp(token, "0") != 0)
+	num = strtol(token, &endptr, 10);
+	if (*endptr != '\0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
