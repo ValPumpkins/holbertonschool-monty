@@ -22,6 +22,7 @@ void getOp(char *opcode, unsigned int line_number, char *line, FILE *file)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", division},
 		{NULL, NULL}
 	};
 
